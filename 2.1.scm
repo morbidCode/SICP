@@ -1,0 +1,7 @@
+(define (make-rat n d)
+(let ((g (gcd n d)))
+(let ((ln (/ n g))
+(ld (/ d g)))
+(cond ((negative? ln) (cons ln (abs ld)))
+((negative? ld) (cons (- ln) (abs ld)))
+(else (cons ln ld))))))

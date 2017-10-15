@@ -1,0 +1,6 @@
+(define (deep-deep-reverse lst)
+(define (aux lst acc)
+(cond ((null? lst) acc)
+((pair? lst) (aux (cdr lst) (cons (deep-deep-reverse (car lst)) acc)))
+(else lst)))
+(aux lst '()))

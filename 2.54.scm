@@ -1,0 +1,12 @@
+(define (equal? x y)
+(cond ((and (null? x) (null? y)) #t)
+((or (null? x) (null? y)) #f)
+(else (let ((first-x (car x))
+(rest-x (cdr x))
+(first-y (car y))
+(rest-y (cdr y)))
+(if (if (and (pair? first-x) (pair? first-y))
+(not (equal? first-x first-y))
+(not (eq? first-x first-y)))
+#f
+(equal? rest-x rest-y))))))
