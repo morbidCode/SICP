@@ -1,4 +1,4 @@
-(define (lookup key tre e-record)
+(define (lookup key tree-record)
 (if (null? tree-record) #f
 (let ((cur (entry tree-record)))
 (cond ((< key (key cur)) (lookup key (left-branch tree-record)))
