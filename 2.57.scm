@@ -40,20 +40,14 @@
          (* m1 m2))
         (else (list '* m1 m2))))
 
-(define (=number? exp num)
-  (and (number? exp) (= exp num)))
-
 (define (sum? x)
   (and (pair? x) (eq? (car x) '+)))
 
 (define (addend s) (cadr s))
 
 (define (augend s)
-(define (rest-terms s)
-(if (null? (cdr s))
-(car s)
-(make-sum (car s) (rest-terms (cdr s)))))
-(rest-terms (cddr s)))
+(let ((value (cddr s)))
+(if (null? (cdr value)) (car value) (cons (car s) value))))
 
 (define (product? x)
   (and (pair? x) (eq? (car x) '*)))
@@ -61,8 +55,8 @@
 (define (multiplier p) (cadr p))
 
 (define (multiplicand p)
-(define (rest-terms p)
-(if (null? (cdr p))
-(car p)
-(make-product (car p) (rest-terms (cdr p)))))
-(rest-terms (cddr p)))
+(let ((value (cddr p)))
+(if (null? (cdr value)) (car value) (cons (car p) value))))
+
+(define (=number? exp num)
+  (and (number? exp) (= exp num)))
