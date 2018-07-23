@@ -1,3 +1,6 @@
+(define (square x) (* x x))
+(define (even? n) (= (remainder n 2) 0))
+
 (define (fib n)
 (fib-iter 1 0 0 1 n))
 
