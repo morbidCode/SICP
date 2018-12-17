@@ -1,6 +1,4 @@
 (#%require sicp) ; from https://pkgs.racket-lang.org/package/sicp
-(print-as-expression #f)
-(#%require r5rs/init)
 (#%require "sicp-concurrency.rkt") ; from https://gist.github.com/soegaard/d32e12d89705c774b71ee78ef930a4bf
 
 ; other procedures from the book
