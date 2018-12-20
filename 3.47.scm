@@ -13,7 +13,8 @@
 
 (define (release)
 (mutex 'acquire)
-(set! number-of-processes (- number-of-processes 1))
+(if (> number-of-processes 0)
+(set! number-of-processes (- number-of-processes 1)))
 (mutex 'release))
 
     (define (the-semaphore m)
@@ -38,8 +39,10 @@
 (define (release)
 (if (test-and-set! cell)
 (release)
+(if (= number-of-processes 0)
+(clear! cell)
 (begin (set! number-of-processes (- number-of-processes 1))
-(clear! cell))))
+(clear! cell)))))
 
     (define (the-semaphore m)
       (cond ((eq? m 'acquire) (acquire))
