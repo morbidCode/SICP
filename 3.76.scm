@@ -1,7 +1,7 @@
 (define (smooth input-stream)
 (stream-map 
-(lambda (input next-input) 
-(/ (+ input next-input) 2)) 
+(lambda (element next-element) 
+(/ (+ element next-element) 2)) 
 input-stream (stream-cdr input-stream)))
 
 (define smoothed-sense-data (smooth sense-data))
