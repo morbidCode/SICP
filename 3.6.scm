@@ -1,10 +1,11 @@
 (define rand
   (let ((x random-init))
 (lambda (symbol)
-(if (eq? symbol 'generate)
+(cond ((eq? symbol 'generate)
 (begin (set! x (rand-update x))
-x)
+x))
+((eq? symbol 'reset) 
 (lambda (y)
 (begin (set! x y)
-x))))))
-
+x)))
+(else (error "Unknown symbol: RAND" symbol))))))
