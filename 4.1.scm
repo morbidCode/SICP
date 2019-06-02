@@ -2,7 +2,7 @@
 (if (no-operands? exps)
 '()
 (let ((value (eval (first-operand exps) env)))
-(cons value (list-of-values-left (rest-operands exps))))))
+(cons value (list-of-values-left (rest-operands exps) env)))))
 
 (define (list-of-values-right exps env)
 (let ((result '()))

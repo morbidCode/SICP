@@ -1,0 +1,8 @@
+(define (let->combination exp)
+(if (symbol? (cadr exp))
+(let ((params (caddr exp)))
+(let ((vars (map car params)))
+(let ((name-vars (cons (cadr exp) vars)))
+(cons (make-lambda vars (list (cons 'define (cons name-vars (cdddr exp))) name-vars)) (map cadr params)))))
+(let ((params (cadr exp)))
+(cons (make-lambda (map car params) (cddr exp)) (map cadr params)))))
